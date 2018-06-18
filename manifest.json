@@ -17,6 +17,10 @@
     "128": "img/icon.png"
   },
   "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "http://*/",
+    "https://*/",
     "activeTab",
     "tts",
     "storage",
@@ -33,9 +37,10 @@
       "js/defaults.js",
       "js/speech.js",
       "js/document.js",
-      "js/events.js"
+      "js/events.js",
+      "js/adblock.js"
     ],
-    "persistent": false
+    "persistent": true
   },
   "options_page": "options.html",
   "options_ui": {
