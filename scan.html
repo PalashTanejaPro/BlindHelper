@@ -8,37 +8,26 @@ $(document).ready(function() {
  var paragraphContent = "";
  var lists = "";
  var tableContent = "";
+ var imageAlt = "";
 
  function addToContent(content, tag) {
     var count = document.getElementsByTagName(tag).length;
     for (var i = 0; i < count; i++) {
-    content += document.getElementsByTagName(tag)[i].innerHTML + " ";
+      content += document.getElementsByTagName(tag)[i].innerHTML + " ";
      }
    console.log(content);
  }
 
- /*
-  * SIDEBAR CONTENT
-  */
  addToContent(sideBarContent, "aside");
- // (?) body sourceCode.search(/>*<\/body/gm);
-
-
- /*
-  * BODY CONTENT
-  */
  addToContent(headers, "h");
  addToContent(paragraphContent, "p");
  addToContent(lists, "li");
  addToContent(tableContent, "table");
-
- // (?) span sourceCode.search(/>*<\/span>/gm);
-
- /*
-  * NAVIGATION CONTENT
-  */
-  // a
  addToContent(navigationContent, "a");
+ var count = document.getElementsByTagName("img").length;
+ for (var i = 0; i < count; i++) {
+   imageAlt += document.getElementsByTagName("img")[i].getAttribute("alt") + " ";
+ }
 
 });
 </script>
