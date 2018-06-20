@@ -1,4 +1,5 @@
- var sourceCode = document.getElementsByTagName('html')[0].innerHTML;
+$(document).ready(function() { 
+  var sourceCode = document.getElementsByTagName('html')[0].innerHTML;
  var sideBarContent = "";
  var navigationContent = "";
  var headers = "";
