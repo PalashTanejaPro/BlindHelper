@@ -13,42 +13,38 @@ $(document).ready(function() {
  var cards = "";
  var carouselContent = "";
 
- function addToContent(content, tag) {
+ function addToContent(tag) {
     var count = document.getElementsByTagName(tag).length;
+    content = "";
     for (var i = 0; i < count; i++) {
       content += document.getElementsByTagName(tag)[i].innerHTML + " ";
      }
-   console.log(content);
+    return content;
  }
 
- function addToContentWithClass(content, htmlclass) {
+ function addToContentWithClass(htmlclass) {
    var count = document.getElementsByClassName(htmlclass).length;
+   var content = "";
    for (var i = 0; i < count; i++) {
      content += document.getElementsByClassName(htmlclass)[i].innerHTML + " ";
    }
+   return content;
  }
 
- addToContent(sideBarContent, "aside");
- addToContentWithClass(sideBarContent, "nav");
- addToContentWithClass(sideBarContent, "breadcrumb-item");
- addToContentWithClass(sideBarContent, "tab-content");
- addToContentWithClass(sideBarContent, "page-link");
- addToContentWithClass(sideBarContent, "navigation");
- addToContent(headers, "h");
- addToContent(paragraphContent, "p");
- addToContentWithClass(paragraphContent, "content");
- addToContentWithClass(paragraphContent, "main");
- addToContent(lists, "li");
- addToContentWithClass(lists, "list-group-item");
- addToContent(tableContent, "th");
- addToContent(tableContent, "td");
- addToContent(navigationContent, "a");
- addToContentWithClass(blockQuotes, "blockquote");
- addToContentWithClass(footers, "footer");
- addToContentWithClass(buttons, "btn");
- addToContentWithClass(cards, "card");
- addToContentWithClass(carouselContent, "carousel-caption");
+ sideBarContent = addToContent("aside") + addToContentWithClass(sideBarContent, "nav") + addToContentWithClass("breadcrumb-item") +
+ 				  addToContentWithClass("tab-content") + addToContentWithClass("page-link") + addToContentWithClass("navigation");
+ headers = addToContent("h");
+ paragraphContent = addToContent("p") + addToContentWithClass("content") + addToContentWithClass("main");
+ lists = addToContent("li") + addToContentWithClass("list-group-item");
+ tableContent = addToContent(tableContent, "th") + addToContent(tableContent, "td");
+ navigationContent = addToContent("a");
+ blockQuotes = addToContentWithClass("blockquote");
+ footers = addToContentWithClass("footer");
+ buttons = addToContentWithClass("btn");
+ cards = addToContentWithClass("card");
+ carouselContent = addToContentWithClass("carousel-caption");
 
+ // console.log(sideBarContent);
  var count = document.getElementsByTagName("img").length;
  for (var i = 0; i < count; i++) {
    imageAlt += document.getElementsByTagName("img")[i].getAttribute("alt") + " ";
