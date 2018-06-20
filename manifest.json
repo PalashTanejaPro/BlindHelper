@@ -33,7 +33,8 @@
       "js/defaults.js",
       "js/speech.js",
       "js/document.js",
-      "js/events.js"
+      "js/events.js",
+      "js/scan.js"
     ],
     "persistent": false
   },
