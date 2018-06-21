@@ -20,11 +20,39 @@ if (annyang) {
           "Hello World!!"
       ); },
     'show me *website': function(website){
+      console.log(website);
+        chrome.tabs.create({
+          url: "https://"+website+".com",
+          selected: true
+        })
+      },
+      'bring me to *website': function(website){
+        console.log(website);
+        chrome.tabs.create({
+          url: "https://"+website+".com",
+          selected: true
+        })
+      },
+      'take me to *website': function(website){
           console.log(website);
           chrome.tabs.create({
-              url: "https://"+website+".com",
-              selected: true
+            url: "https://"+website+".com",
+            selected: true
           })
+      },
+      'open *website': function(website){
+          console.log(website);
+          chrome.tabs.create({
+            url: "https://"+website+".com",
+            selected: true
+          })
+      },
+      'navigate to *website': function(website){
+        console.log(website);
+        chrome.tabs.create({
+          url: "https://"+website+".com",
+          selected: true
+        })
       }
     };
 
@@ -33,13 +61,13 @@ if (annyang) {
         console.log(commandText); // sample output: 'hello (there)'
         console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
     });
-  
+
     // Add our commands to annyang
     annyang.addCommands(commands);
-  
+
     // Start listening.
     annyang.start();
 
     console.log(annyang.isListening());
-    
+
 }
