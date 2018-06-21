@@ -94,6 +94,7 @@ function TabSource() {
     return executeFile("js/jquery-3.1.1.min.js")
       .then(executeFile.bind(null, "js/es6-promise.auto.min.js"))
       .then(executeFile.bind(null, "js/content.js"))
+      .then(executeFile.bind(null, "js/annyang-min.js"))
       .then(executeScript.bind(null, "connect('" + name + "')"))
   }
 }
