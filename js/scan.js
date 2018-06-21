@@ -2,7 +2,7 @@ $(document).ready(function() {
   page_contents = {
     sideBarContent: {
       tags: ["aside"],
-      value: "",
+      value: new Set(),
       class: [
         "nav",
         "breadcrumb-item",
@@ -11,56 +11,62 @@ $(document).ready(function() {
         "navigation"
       ]
     },
-    navigationContent: { tags: ["a"], value: "", class: [] },
-    headers: { tags: ["h"], value: "", class: [] }, //Does "h" even work?
-    paragraphContent: { tags: ["p"], value: "", class: ["content", "main"] }, // What <p> has class of "content"? Solution: use a set
-    lists: { tags: ["li"], value: "", class: ["list-group-item"] },
-    tableContent: { tags: ["th", "td"], value: "", class: [] },
-    imageAlt: { tags: [], value: "", class: [] },
-    blockQuotes: { tags: [], value: "", class: ["blockquote"] },
-    footers: { tags: ["footer"], value: "", class: ["footer"] },
-    buttons: { tags: ["button"], value: "", class: ["button", "btn"] },
-    cards: { tags: ["card"], value: "", class: ["card", "cards"] },
+    navigationContent: { tags: ["a"], value: new Set(), class: [] },
+    headers: { tags: ["h1", "h2", "h3", "h4", "h5", "h6"], value: new Set(), class: [] },
+    paragraphContent: { tags: ["p"], value: new Set(), class: ["content", "main"] }, // What <p> has class of "content"? Solution: use a set
+    lists: { tags: ["li"], value: new Set(), class: ["list-group-item"] },
+    tableContent: { tags: ["th", "td"], value: new Set(), class: [] },
+    imageAlt: { tags: [], value: new Set(), class: [] },
+    blockQuotes: { tags: [], value: new Set(), class: ["blockquote"] },
+    footers: { tags: ["footer"], value: new Set(), class: ["footer"] },
+    buttons: { tags: ["button"], value: new Set(), class: ["button", "btn"] },
+    cards: { tags: ["card"], value: new Set(), class: ["card", "cards"] },
     carouselContent: {
       tags: [],
-      value: "",
+      value: new Set(),
       class: ["carousel-caption", "carousel"]
     }
   };
 
   function addToContent(tag) {
     var count = document.getElementsByTagName(tag).length;
-    content = "";
+    content = [];
     for (var i = 0; i < count; i++) {
-      content += document.getElementsByTagName(tag)[i].innerHTML + " ";
+      content.push(document.getElementsByTagName(tag)[i].innerHTML);
     }
     return content;
   }
 
   function addToContentWithClass(htmlclass) {
     var count = document.getElementsByClassName(htmlclass).length;
-    var content = "";
+    var content = [];
     for (var i = 0; i < count; i++) {
-      content += document.getElementsByClassName(htmlclass)[i].innerHTML + " ";
+      content.push(document.getElementsByClassName(htmlclass)[i].innerHTML);
     }
     return content;
   }
 
   for (var key in page_contents) {
     for (var i = 0; i < page_contents[key].tags.length; ++i) {
-      page_contents[key].value += addToContent(page_contents[key].tags[i]);
+    	var content = addToContent(page_contents[key].tags[i]);
+    	var count = content.length;
+    	for (var j = 0; j < count; j++) {
+    		page_contents[key].value.add(content[j]);
+    	}
     }
     for (var i = 0; i < page_contents[key].class.length; ++i) {
-      page_contents[key].value += addToContentWithClass(
-        page_contents[key].class[i]
-      );
+    	var content = addToContent(page_contents[key].class[i]);
+   		var count = content.length;
+    	for (var j = 0; j < count; j++) {
+    		page_contents[key].value.add(content[j]);
+    	}
     }
   }
 
-  // console.log(sideBarContent);
+  //console.log(page_contents["paragraphContent"].value);
   var count = document.getElementsByTagName("img").length;
   for (var i = 0; i < count; i++) {
-    page_content["imageAlt"].value +=
+    page_contents["imageAlt"].value +=
       document.getElementsByTagName("img")[i].getAttribute("alt") + " ";
   }
 });
