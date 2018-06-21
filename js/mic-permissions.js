@@ -136,14 +136,56 @@ if (annyang) {
           selected: true
         });
         speak(["Searching for..", item]);
+        }
+      },
+      'read *item': function(item){
+        console.log(item);
+        getBackgroundPage()
+          .then(function(master) {
+            return master.play(function(err) {
+                if (err) $("#status").text(err.message).show();
+              })
+              .then(updateButtons)
+              .then(master.getDocInfo)
+              .then(function(docInfo) {return setState("lastUrl", docInfo && docInfo.url)})
+              .catch(function(err) {
+                if (err.stack) {
+                  master.reportIssue(null, err.stack.startsWith(err.name) ? err.stack : (err.name + ": " + err.message + "\n" + err.stack));
+                }
+                if (/^{/.test(err.message)) $("#status").text(formatError(JSON.parse(err.message)) || err.message).show();
+                else $("#status").text(err.message).show();
+              });
+          });
+        /*
+        if (item == "content") {
+          speak(page_contents['paragraphContent'].value);
+        } else if (item == "navigation") {
+          speak(page_contents['navigationContent'].value);
+        } else if (item == "headers") {
+          speak(page_contents['headers'].value);
+        } else if (item == "lists") {
+          speak(page_contents['lists'].value);
+        } else if (item == "tables") {
+          speak(page_contents['tableContent'].value);
+        } else if (item == "images") {
+          speak(page_contents['imageAlt'].value);
+        } else if (item == "quotes") {
+          speak(page_contents['blockQuotes'].value);
+        } else if (item == "footers") {
+          speak(page_contents['footers'].value);
+        } else if (item == "buttons") {
+          speak(page_contents['buttons'].value);
+        } else if (item == "cards") {
+          speak(page_contents['cards'].value);
+        } else if (item == "carousel") {
+          speak(page_contents['carouselContent'].value);
+        } else if (item == "everything") {
+          master.play(function(err) {
+            if (err) $("#status").text(err.message).show();
+          });
+        }
+        */
       }
-
-      /*
-      'read me *content': function(content){
-        console.log(content);
-
-      }
-      */
     };
 
     annyang.addCallback('resultNoMatch', function(userSaid, commandText, phrases) {
@@ -160,4 +202,47 @@ if (annyang) {
 
     console.log(annyang.isListening());
 
+    // read everything
+    function updateButtons() {
+      return getBackgroundPage().then(function(master) {
+        return Promise.all([
+          getSettings(),
+          master.getPlaybackState(),
+          master.getActiveSpeech()
+        ])
+      })
+      .then(spread(function(settings, state, speech) {
+        $("#imgLoading").toggle(state == "LOADING");
+        $("#btnSettings").toggle(state == "STOPPED");
+        $("#btnPlay").toggle(state == "PAUSED" || state == "STOPPED");
+        $("#btnPause").toggle(state == "PLAYING");
+        $("#btnStop").toggle(state == "PAUSED" || state == "PLAYING" || state == "LOADING");
+        $("#btnForward, #btnRewind").toggle(state == "PLAYING");
+        $("#attribution").toggle(Boolean(speech && isGoogleTranslate(speech.options.voice.voiceName)));
+        $("#highlight, #resize").toggle(Boolean(settings.showHighlighting != null ? settings.showHighlighting : defaults.showHighlighting) && (state == "PAUSED" || state == "PLAYING"));
+
+        if (settings.showHighlighting && speech) {
+          var pos = speech.getPosition();
+          var elem = $("#highlight");
+          if (elem.data("texts") != pos.texts) {
+            elem.data({texts: pos.texts, index: -1});
+            elem.empty();
+            for (var i=0; i<pos.texts.length; i++) {
+              var html = escapeHtml(pos.texts[i]).replace(/\r?\n/g, "<br/>");
+              $("<span>").html(html).appendTo(elem);
+            }
+          }
+          if (elem.data("index") != pos.index) {
+            elem.data("index", pos.index);
+            elem.children(".active").removeClass("active");
+            var child = elem.children().eq(pos.index).addClass("active");
+            if (child.length) {
+            var childTop = child.position().top;
+            var childBottom = childTop + child.outerHeight();
+            if (childTop < 0 || childBottom >= elem.height()) elem.animate({scrollTop: elem[0].scrollTop + childTop - 10});
+            }
+          }
+        }
+      }));
+    }
 }
