@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  page_contents = {
+
+  var page_contents = {
     sideBarContent: {
       tags: ["aside"],
       value: new Set(),
@@ -69,4 +69,3 @@ $(document).ready(function() {
     page_contents["imageAlt"].value +=
       document.getElementsByTagName("img")[i].getAttribute("alt") + " ";
   }
-});
