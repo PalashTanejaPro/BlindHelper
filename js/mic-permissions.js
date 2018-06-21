@@ -53,7 +53,21 @@ if (annyang) {
           url: "https://"+website+".com",
           selected: true
         })
+      },
+      'search *item': function(item) {
+        console.log(item);
+        chrome.tabs.create({
+          url: "https://www.google.com/search?q=" + item,
+          selected: true
+        })
       }
+
+      /*
+      'read me *content': function(content){
+        console.log(content);
+
+      }
+      */
     };
 
     annyang.addCallback('resultNoMatch', function(userSaid, commandText, phrases) {
