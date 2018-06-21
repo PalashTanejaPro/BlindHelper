@@ -19,14 +19,20 @@ if (annyang) {
       'hello': function() { console.log(
           "Hello World!!"
       ); },
-    //   'open *website': function(website){
-    //       console.log(website);
-    //       chrome.tabs.create({
-    //           url: website,
-    //           selected: true
-    //       })
-    //   }
+    'show me *website': function(website){
+          console.log(website);
+          chrome.tabs.create({
+              url: "https://"+website+".com",
+              selected: true
+          })
+      }
     };
+
+    annyang.addCallback('resultNoMatch', function(userSaid, commandText, phrases) {
+        console.log(userSaid); // sample output: 'hello'
+        console.log(commandText); // sample output: 'hello (there)'
+        console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
+    });
   
     // Add our commands to annyang
     annyang.addCommands(commands);
