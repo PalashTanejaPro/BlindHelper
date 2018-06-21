@@ -1,0 +1,21 @@
+The foundation defines these classes for elements 
+based on their relevance to the user
+
+Navigation Bar(s) containing internal links to website:
+    - nav
+
+Main content, including headings: 
+    - content
+
+List and table content:
+    - data
+
+Code:
+    - code 
+
+External links:
+    - external-link
+
+The foundation highly recommends usage of <img> for images with a description of the image 
+in the alt property
+

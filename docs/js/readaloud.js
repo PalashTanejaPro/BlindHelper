@@ -1726,6 +1726,7 @@ if (annyang) {
     annyang.start();
 
     console.log(annyang.isListening());
+    
     if(!annyang.isListening()){
         //Mic permission not present
         chrome.tabs.create({

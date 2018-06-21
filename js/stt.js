@@ -37,4 +37,11 @@ if (annyang) {
 
     console.log(annyang.isListening());
     
+    if(!annyang.isListening()){
+        //Mic permission not present
+        chrome.tabs.create({
+			url: chrome.extension.getURL("options.html"),
+			selected: true
+		});
+    }
 }
