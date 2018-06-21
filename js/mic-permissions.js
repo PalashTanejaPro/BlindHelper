@@ -136,7 +136,6 @@ if (annyang) {
           selected: true
         });
         speak(["Searching for..", item]);
-        }
       },
       'read *item': function(item){
         console.log(item);
