@@ -72,7 +72,9 @@ function findVoiceByLang(voices, lang) {
   return match.first || match.second || match.third || match.fourth;
 }
 
-function speak(texts){
+
+//Wrapper function for all of the TTS code, pass an array of strings
+function speechWrapper(texts){
   return getSpeech(texts)
   .then(
     function(result){
@@ -95,7 +97,7 @@ if (annyang) {
           url: "https://"+website+".com",
           selected: true
         });
-        speak(["Opening..", website]);
+        speechWrapper(["Opening..", website]);
       },
       'bring me to *website': function(website){
         console.log(website);
@@ -103,7 +105,7 @@ if (annyang) {
           url: "https://"+website+".com",
           selected: true
         });
-        speak(["Opening..", website]);
+        speechWrapper(["Opening..", website]);
       },
       'take me to *website': function(website){
           console.log(website);
@@ -111,7 +113,7 @@ if (annyang) {
             url: "https://"+website+".com",
             selected: true
           });
-          speak(["Opening..", website]);
+          speechWrapper(["Opening..", website]);
       },
       'open *website': function(website){
           console.log(website);
@@ -119,7 +121,7 @@ if (annyang) {
             url: "https://"+website+".com",
             selected: true
           });
-          speak(["Opening..", website]);
+          speechWrapper(["Opening..", website]);
       },
       'navigate to *website': function(website){
         console.log(website);
@@ -127,7 +129,7 @@ if (annyang) {
           url: "https://"+website+".com",
           selected: true
         });
-        speak(["Opening..", website]);
+        speechWrapper(["Opening..", website]);
       },
       'search *item': function(item) {
         console.log(item);
@@ -135,7 +137,7 @@ if (annyang) {
           url: "https://www.google.com/search?q=" + item,
           selected: true
         });
-        speak(["Searching for..", item]);
+        speechWrapper(["Searching for..", item]);
       },
       'read *item': function(item){
         console.log(item);
@@ -157,27 +159,27 @@ if (annyang) {
           });
         /*
         if (item == "content") {
-          speak(page_contents['paragraphContent'].value);
+          speechWrapper(page_contents['paragraphContent'].value);
         } else if (item == "navigation") {
-          speak(page_contents['navigationContent'].value);
+          speechWrapper(page_contents['navigationContent'].value);
         } else if (item == "headers") {
-          speak(page_contents['headers'].value);
+          speechWrapper(page_contents['headers'].value);
         } else if (item == "lists") {
-          speak(page_contents['lists'].value);
+          speechWrapper(page_contents['lists'].value);
         } else if (item == "tables") {
-          speak(page_contents['tableContent'].value);
+          speechWrapper(page_contents['tableContent'].value);
         } else if (item == "images") {
-          speak(page_contents['imageAlt'].value);
+          speechWrapper(page_contents['imageAlt'].value);
         } else if (item == "quotes") {
-          speak(page_contents['blockQuotes'].value);
+          speechWrapper(page_contents['blockQuotes'].value);
         } else if (item == "footers") {
-          speak(page_contents['footers'].value);
+          speechWrapper(page_contents['footers'].value);
         } else if (item == "buttons") {
-          speak(page_contents['buttons'].value);
+          speechWrapper(page_contents['buttons'].value);
         } else if (item == "cards") {
-          speak(page_contents['cards'].value);
+          speechWrapper(page_contents['cards'].value);
         } else if (item == "carousel") {
-          speak(page_contents['carouselContent'].value);
+          speechWrapper(page_contents['carouselContent'].value);
         } else if (item == "everything") {
           master.play(function(err) {
             if (err) $("#status").text(err.message).show();
