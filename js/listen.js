@@ -214,10 +214,10 @@ if (annyang) {
         });
         speechWrapper(["Searching for..", item]);
       },
-      'tell me what you can do': function {
+      'tell me what you can do': function() {
         console.log("explaining features");
-        speechWrapper(["To read the entire webpage, say "Read everything". To read categorized webpage content,\
-        say "read" followed by a category such as paragraph content, navigation, headers, lists, tables, images, quotes, footers,\
+        speechWrapper(["To read the entire webpage, say Read everything. To read categorized webpage content,\
+        say read followed by a category such as paragraph content, navigation, headers, lists, tables, images, quotes, footers,\
         buttons, cards, and carousel content. I can also open new webpages and perform Google searches for you."]);
       },
       'read *item': function(item){
