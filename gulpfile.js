@@ -11,7 +11,7 @@ const fsp = {
 
 
 exports.build = async function() {
-	const jsFiles = ["manifest.json", "js/defaults.js", "js/content.js", "js/speech.js", "js/embed.js", "js/stt.js", "js/scan.js"];
+	const jsFiles = ["manifest.json", "js/defaults.js", "js/content.js", "js/speech.js", "js/embed.js", "js/stt.js", "js/listen.js"];
 	const outFile = "docs/js/readaloud.js";
 	const outFileMin = "docs/js/readaloud.min.js";
 
