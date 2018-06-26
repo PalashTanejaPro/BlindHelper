@@ -271,9 +271,13 @@ if (annyang) {
     // Add our commands to annyang
     annyang.addCommands(commands);
 
+    speechWrapper(["Hi! I am your personal assistant. To get started ask me to do something!"])
+    .then(function (){
+      annyang.start();
+    });
+    
     // Start listening.
-    annyang.start();
-
+    
     console.log(annyang.isListening());
 
     // read everything
