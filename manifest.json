@@ -36,7 +36,8 @@
       "js/document.js",
       "js/events.js",
       "js/stt.js",
-      "js/scan.js"
+      "js/scan.js",
+      "js/listen.js"
     ],
     "persistent": false
   },
