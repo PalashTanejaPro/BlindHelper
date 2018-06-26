@@ -150,6 +150,7 @@ function findVoiceByLang(voices, lang) {
 
 //Wrapper function for all of the TTS code, pass an array of strings
 function speechWrapper(texts){
+  annyang.pause();
   return getSpeech(texts)
   .then(
     function(result){
@@ -173,6 +174,7 @@ if (annyang) {
           selected: true
         });
         speechWrapper(["Opening..", website]);
+        annyang.resume();
       },
       'bring me to *website': function(website){
         console.log(website);
@@ -181,6 +183,7 @@ if (annyang) {
           selected: true
         });
         speechWrapper(["Opening..", website]);
+        annyang.resume();
       },
       'take me to *website': function(website){
           console.log(website);
@@ -189,6 +192,7 @@ if (annyang) {
             selected: true
           });
           speechWrapper(["Opening..", website]);
+          annyang.resume();
       },
       'open *website': function(website){
           console.log(website);
@@ -197,6 +201,7 @@ if (annyang) {
             selected: true
           });
           speechWrapper(["Opening..", website]);
+          annyang.resume();
       },
       'navigate to *website': function(website){
         console.log(website);
@@ -205,6 +210,7 @@ if (annyang) {
           selected: true
         });
         speechWrapper(["Opening..", website]);
+        annyang.resume();
       },
       'search *item': function(item) {
         console.log(item);
@@ -213,12 +219,14 @@ if (annyang) {
           selected: true
         });
         speechWrapper(["Searching for..", item]);
+        annyang.resume();
       },
       'tell me what you can do': function() {
         console.log("explaining features");
         speechWrapper(["To read the entire webpage, say Read everything. To read categorized webpage content,\
         say read followed by a category such as paragraph content, navigation, headers, lists, tables, images, quotes, footers,\
         buttons, cards, and carousel content. I can also open new webpages and perform Google searches for you."]);
+        annyang.resume();
       },
       'read *item': function(item){
         console.log(item);
@@ -265,6 +273,7 @@ if (annyang) {
             if (err) $("#status").text(err.message).show();
           });
         }
+        annyang.resume();
       }
     };
 
