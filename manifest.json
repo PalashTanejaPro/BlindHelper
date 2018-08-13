@@ -18,6 +18,7 @@
   },
   "permissions": [
     "activeTab",
+    "tabs",
     "tts",
     "storage",
     "ttsEngine",
@@ -33,7 +34,9 @@
       "js/defaults.js",
       "js/speech.js",
       "js/document.js",
-      "js/events.js"
+      "js/events.js",
+      "js/stt.js",
+      "js/listen.js"
     ],
     "persistent": false
   },
