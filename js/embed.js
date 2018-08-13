@@ -29,7 +29,7 @@ var readAloud = new function() {
   function ready() {
     if (window.jQuery) {
       if (!window.$) window.$ = window.jQuery;
-      else if (window.$ != window.jQuery) console.warn("WARNING: Read Aloud embed script may not work because $ != jQuery.");
+      else if (window.$ != window.jQuery) console.warn("WARNING: TalkToMe embed script may not work because $ != jQuery.");
       return Promise.resolve();
     }
     else return ajaxGet("https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js").then(eval);

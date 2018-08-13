@@ -1,9 +1,9 @@
 {
   "extension_name": {
-    "message": "Read Aloud: 文本语音朗读助理"
+    "message": "TalkToMe: 文本语音朗读助理"
   },
   "extension_short_name": {
-    "message": "Read Aloud"
+    "message": "TalkToMe"
   },
   "extension_description": {
     "message": "轻轻点击，即可为您朗读页面上的文本。（现正支援超过 40 种以上语言）"

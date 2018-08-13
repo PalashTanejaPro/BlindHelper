@@ -1,9 +1,9 @@
 {
   "extension_name": {
-    "message": "Read Aloud: A Text to Speech Voice Reader"
+    "message": "TalkToMe: A Text to Speech Voice Reader"
   },
   "extension_short_name": {
-    "message": "Read Aloud"
+    "message": "TalkToMe"
   },
   "extension_description": {
     "message": "Read out loud the current web-page article with one click. Supports 40+ languages."
@@ -48,7 +48,7 @@
     "message": "Changes saved."
   },
   "context_read_selection": {
-    "message": "Read aloud selected text"
+    "message": "TalkToMe selected text"
   },
   "error_no_voice": {
     "message": "Language not supported '{lang}'"

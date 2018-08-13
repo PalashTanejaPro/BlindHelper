@@ -1,9 +1,9 @@
 {
   "extension_name": {
-    "message": "Read Aloud: Un Lettore Vocale da Testo a Voce"
+    "message": "TalkToMe: Un Lettore Vocale da Testo a Voce"
   },
   "extension_short_name": {
-    "message": "Read Aloud"
+    "message": "TalkToMe"
   },
   "extension_description": {
     "message": "Legge ad alta voce la pagina web con un click. Supporta 40+ lingue."

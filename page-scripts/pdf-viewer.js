@@ -227,7 +227,7 @@
 
     div.dialog({
       appendTo: document.body,
-      title: "Select PDF file to Read Aloud",
+      title: "Select PDF file to TalkToMe",
       width: 450,
       autoOpen: false,
     })
