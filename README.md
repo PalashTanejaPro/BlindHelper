@@ -1,2 +1,2 @@
-# read-aloud
-Text-to-speech that just works - a Chrome extension
+# TalkToMe  
+A Google chrome assistant for visually impaired internet users. 

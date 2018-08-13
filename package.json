@@ -1,7 +1,7 @@
 {
-  "name": "read-aloud",
+  "name": "TalkToMe",
   "version": "1.0.0",
-  "description": "A Chrome extension that reads aloud the webpage's content with just one click. Support 40+ languages.",
+  "description": "A voice-based assistant that reads website content out loud and navigates to other web pages.",
   "directories": {
     "doc": "docs"
   },
